@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Лист персонажа </title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+
+    <h1>Профайл Резидента "Кальдери":</h1>
+
+    <div class="selection-section">
+        <div class="select-group">
+            <label for="selectRace">1. Оберіть Расу:</label>
+            <select id="selectRace">
+                <option value="none" selected disabled class="initial-option">-- Обери расу --</option>
+                <option value="Людина">Людина</option>
+                <option value="Прибулець">Чужий</option>
+                <option value="Хижак">Хижак</option>
+                <option value="Андроїд">Андроїд</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="selectType">2. Оберіть Тип:</label>
+            <select id="selectType" disabled>
+                <option value="none" selected disabled class="initial-option">-- Обери тип --</option>
+            </select>
+        </div>
+
+        <div class="select-group">
+            <label for="selectLocation">3. Оберіть Місце:</label>
+            <select id="selectLocation" disabled>
+                <option value="none" selected disabled class="initial-option">-- Обери місце --</option>
+            </select>
+        </div>
+    </div>
+    
+    <div id="race-description-area">
+        <h3>Опис обраної Раси:</h3>
+        <p id="race-description-text">Оберіть расу, щоб побачити опис...</p>
+    </div>
+
+    <div class="stats-wrapper">
+        <div class="stats-section">
+            <h2 style="color: #00ff7f; border: none; padding-bottom: 0;">Розподіл Характеристик</h2>
+            <p id="points-info">Вам доступно 10 поінтів характеристик. Розташуйте їх як вважаєте за потрібне.</p>
+            <p id="points-counter">Залишилось 0 невикористаних поінтів.</p>
+
+            <form id="statsForm">
+                <div class="stat-line">
+                    <strong>Сила:</strong>
+                    <div class="checkbox-container" data-stat="Сила">
+                        </div>
+                </div>
+                <div class="stat-line">
+                    <strong>Спритність:</strong>
+                    <div class="checkbox-container" data-stat="Спритність"></div>
+                </div>
+                <div class="stat-line">
+                    <strong>Міткість:</strong>
+                    <div class="checkbox-container" data-stat="Міткість"></div>
+                </div>
+                <div class="stat-line">
+                    <strong>Скритність:</strong>
+                    <div class="checkbox-container" data-stat="Скритність"></div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="profile-area-inputs">
+            <h2>Профіль Персонажа</h2>
+            
+            <label for="charName">Позивний / Ім'я:</label>
+            <input type="text" id="charName" placeholder="Введіть позивний (наприклад, 'Ріплі')...">
+
+            <label for="charHistory">Впишіть свою історію:</label>
+            <textarea id="charHistory" rows="5" placeholder="Опишіть, хто ви, ваше минуле, вашу мету..."></textarea>
+            
+            <button id="scanButton">Сканувати Профайл</button>
+            <button id="printButton" disabled>Створити</button>
+        </div>
+    </div>
+    
+    <div class="profile-area">
+        <div id="portrait-container">
+            <div class="scanner-line" id="scannerLine"></div>
+            <img id="charPortrait" class="portrait-image" src="" alt="Портрет персонажа">
+        </div>
+        <div style="flex-grow: 1;">
+            </div>
+    </div>
+    
+
+    <script src="scripts.js"></script>
+</body>
+</html>

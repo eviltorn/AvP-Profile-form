@@ -1,0 +1,226 @@
+body {
+    background-color: #0d0d0d;
+    color: #00ff7f;
+    font-family: 'Consolas', 'Courier New', monospace;
+    padding: 30px;
+    margin: 0;
+    line-height: 1.6;
+    min-width: 900px;
+}
+
+h1 {
+    color: #ff0000;
+    text-align: center;
+    text-transform: uppercase;
+    border-bottom: 2px solid #00ff7f;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Розділ вибору (Раса, Тип, Місце) */
+.selection-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px dashed #00ff7f;
+    border-radius: 5px;
+}
+
+.select-group {
+    flex-basis: 30%;
+    min-width: 250px;
+    margin: 0 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #00ff7f;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    background-color: #222;
+    color: #00ff7f;
+    border: 1px solid #00ff7f;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select:disabled {
+    background-color: #444;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Стилі для розділу опису раси */
+#race-description-area {
+    padding: 20px;
+    margin-bottom: 40px;
+    border: 1px solid #ff0000;
+    background-color: #1a0000;
+    border-radius: 5px;
+    min-height: 100px;
+    white-space: pre-wrap;
+}
+
+#race-description-area h3 {
+    color: #ff0000;
+    margin-top: 0;
+    border-bottom: 1px dotted #ff0000;
+    padding-bottom: 5px;
+}
+
+/* Стилі для чекерів */
+.stats-wrapper {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.stats-section {
+    flex-grow: 1;
+    padding: 20px;
+    border: 1px solid #00ff7f;
+    border-radius: 5px;
+}
+
+#points-info {
+    color: #ffcc00;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.stat-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.stat-line strong {
+    display: inline-block;
+    width: 100px;
+    color: #fff;
+}
+
+.checkbox-container {
+    display: flex;
+    gap: 5px;
+    padding-left: 10px;
+}
+
+/* Спеціальна стилізація чекерів */
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+.checkbox-container label {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #00ff7f;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 0;
+    transition: background-color 0.1s;
+}
+
+.checkbox-container input[type="checkbox"]:checked + label {
+    background-color: #00ff37; /*колір своїх чекерів */
+    border-color: #fff;
+}
+
+/*Стиль для базових поінтів */
+.checkbox-container input[type="checkbox"][data-base="true"]:checked + label {
+    background-color: #ff0000; /* Червоний колір для базових поінтів */
+    border-color: #fff;
+}
+
+/* Стилі для імені та історії */
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #222;
+    color: #00ff7f;
+    border: 1px solid #00ff7f;
+    border-radius: 3px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+/* Кнопки */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    margin-right: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Секція сканування портрета */
+.profile-area {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.profile-area > div {
+    flex-grow: 1;
+}
+
+/*Фіксація розмірів контейнера */
+#portrait-container {
+    width: 512px;
+    height: 512px; 
+    flex-shrink: 0; /* ЗАБОРОНЯЄМО стискатися*/
+    flex-grow: 0; /* ЗАБОРОНЯЄМО розтягуватися*/
+    box-sizing: border-box; 
+    
+    background-color: #0d0d0d;
+    border: 2px solid #ff0000;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+.portrait-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*заповнення контейнера*/
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+/* Ефект сканера */
+@keyframes scan-effect {
+    0% { top: 0; opacity: 1; }
+    50% { top: 97%; opacity: 1; }
+    100% { top: 0; opacity: 1; }
+}
+.scanner-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ff7f, transparent);
+    animation: scan-effect 2s infinite linear;
+    box-shadow: 0 0 10px 5px #00ff7f;
+    opacity: 0;
+}
+
+/* Стан "Обрати расу" */
+.initial-option { color: #888; }
